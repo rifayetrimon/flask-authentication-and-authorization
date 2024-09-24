@@ -1,0 +1,55 @@
+{% extends "common/base.html" %}
+
+
+{% block content %}
+
+<div class="container mx-auto mt-10">
+    <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold mb-6">Register</h1>
+
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-4">
+                <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                {{ form.username(class_='mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg') }}
+                {% for error in form.username.errors %}
+                    <small class="text-red-500">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                {{ form.email(class_='mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg') }}
+                {% for error in form.email.errors %}
+                    <small class="text-red-500">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                {{ form.password(class_='mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg') }}
+                {% for error in form.password.errors %}
+                    <small class="text-red-500">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <div class="mb-4">
+                <label for="confirm_password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                {{ form.confirm_password(class_='mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg') }}
+                {% for error in form.confirm_password.errors %}
+                    <small class="text-red-500">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <div>
+                {{ form.submit(class_='w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out') }}
+            </div>
+        </form>
+        <p class="mt-4 text-center">
+            Already have an account? <a href="{{ url_for('login') }}" class="text-indigo-600 hover:text-indigo-700">Login here</a>.
+        </p>
+    </div>
+</div>
+
+{% endblock content %}

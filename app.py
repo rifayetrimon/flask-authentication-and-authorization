@@ -1,13 +1,12 @@
 from flask import Flask, flash, render_template, request, redirect, session, url_for
 from forms import RegistrationForm, LoginForm
 from flask_pymongo import PyMongo
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash
 
 app = Flask(__name__)
 
 # Correctly define the MONGO_URI as a string
-app.config["MONGO_URI"] = "mongodb+srv://flask_curd:vkXLEwIoRkT0If6O@cluster0.5jv2s.mongodb.net/flaskDB?retryWrites=true&w=majority&appName=Cluster0"
-
+app.config["MONGO_URI"] = "mongodb+srv://flask_curd:vkXLEwIoRkT0If6O@cluster0.5jv2s.mongodb.net/flaskDB?retryWrites=true&w=majority"
 app.config['SECRET_KEY'] = 'mysecretkey'
 mongo = PyMongo(app) 
 
@@ -42,9 +41,9 @@ def registration():
         })
 
         flash('Registration successful!', 'success')
-        return redirect(url_for('registration'))  # Redirect to avoid re-submission
+        return redirect(url_for('registration'))  # Redirect to avoid re-su, submission
 
-    return render_template("register.html", form=form)
+    return render_template("register.html", form=form, show_navbar=False)
 
 
 
@@ -66,7 +65,7 @@ def login():
         else:
             flash('Invalid email or password', 'error')
         
-    return render_template("login.html", form=form)
+    return render_template("login.html", form=form, show_navbar=False)
 
 
 

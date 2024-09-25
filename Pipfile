@@ -10,6 +10,7 @@ pymongo = "*"
 flask-wtf = "*"
 
 [dev-packages]
+pymongo = "*"
 
 [requires]
 python_version = "3.12"
